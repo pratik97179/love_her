@@ -1,64 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffeef8 0%, #fff 100%);
-        }
-        
-        .message {
-            font-size: 3rem;
-            color: #ff69b4;
-            text-align: center;
-            font-weight: bold;
-            animation: fadeIn 1s ease-in;
-        }
-        
-        .heart {
-            font-size: 2rem;
-            margin: 0 0.5rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>I Love You</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="message">
-        I <span class="heart">❤️</span> you
-    </div>
-</body>
-</html>
 
+            body {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Arial", sans-serif;
+                background: linear-gradient(
+                    135deg,
+                    #ff9ecf 0%,
+                    #ffb3d9 25%,
+                    #ffcce6 50%,
+                    #ffe6f2 75%,
+                    #fff0f8 100%
+                );
+                background-size: 400% 400%;
+                animation: gradientShift 8s ease infinite;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .message {
+                font-size: 3.5rem;
+                background: linear-gradient(
+                    45deg,
+                    #ff1493,
+                    #ff69b4,
+                    #ffb6c1,
+                    #ff1493
+                );
+                background-size: 300% 300%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-align: center;
+                font-weight: bold;
+                animation: fadeIn 1s ease-in, gradientText 3s ease infinite;
+                text-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+                position: relative;
+                z-index: 10;
+                padding: 2rem;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .heart {
+                font-size: 2.5rem;
+                margin: 0 0.5rem;
+                animation: pulse 2s ease-in-out infinite;
+                display: inline-block;
+                color: #ff1493;
+                -webkit-text-fill-color: #ff1493;
+                background: none;
+            }
+
+            .floating-heart {
+                position: absolute;
+                font-size: 1.5rem;
+                color: rgba(255, 105, 180, 0.6);
+                animation: float 6s ease-in-out infinite;
+                pointer-events: none;
+            }
+
+            .floating-heart:nth-child(1) {
+                left: 10%;
+                animation-delay: 0s;
+            }
+            .floating-heart:nth-child(2) {
+                left: 20%;
+                animation-delay: 1s;
+            }
+            .floating-heart:nth-child(3) {
+                left: 30%;
+                animation-delay: 2s;
+            }
+            .floating-heart:nth-child(4) {
+                left: 70%;
+                animation-delay: 1.5s;
+            }
+            .floating-heart:nth-child(5) {
+                left: 80%;
+                animation-delay: 0.5s;
+            }
+            .floating-heart:nth-child(6) {
+                left: 90%;
+                animation-delay: 2.5s;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.2);
+                }
+            }
+
+            @keyframes gradientShift {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            @keyframes gradientText {
+                0%,
+                100% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="floating-heart">💕</div>
+        <div class="floating-heart">💖</div>
+        <div class="floating-heart">💗</div>
+        <div class="floating-heart">💕</div>
+        <div class="floating-heart">💖</div>
+        <div class="floating-heart">💗</div>
+
+        <div class="message">I <span class="heart">♥</span> you</div>
+    </body>
+</html>
